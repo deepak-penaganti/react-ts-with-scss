@@ -223,14 +223,6 @@ module.exports = {
                     ],
                   },
                 },
-                {
-                  loader: require.resolve('sass-loader'),
-                  options: {
-                    importLoaders: 1,
-                    minimize: true,
-                    sourceMap: true,
-                  },
-                },
               ],
             },
             extractTextPluginOptions
@@ -269,6 +261,14 @@ module.exports = {
                         flexbox: 'no-2009',
                       }),
                     ],
+                  },
+                },
+                {
+                  loader: require.resolve('sass-loader'),
+                  options: {
+                    importLoaders: 1,
+                    minimize: true,
+                    sourceMap: true,
                   },
                 },
               ],

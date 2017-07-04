@@ -14,5 +14,5 @@ Please refer to its documentation:
 ## Usage
 
 ```Shell
-create-react-app your-app-name --script-version react-ts-with-scss
+$ create-react-app your-app-name --script-version react-ts-with-scss
 ```

@@ -10,3 +10,9 @@ Please refer to its documentation:
 
 * This script-version provides the Typescript capability with the flavour of SCSS
 * The much pleasing for developers is the feature of live reload which is available even for changes in SCSS files(:star: Star if you feel cool :thumbsup: ). 
+
+## Usage
+
+```Shell
+create-react-app your-app-name --script-version react-ts-with-scss
+```

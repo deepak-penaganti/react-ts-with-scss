@@ -159,7 +159,7 @@ module.exports = {
           /\.(js|jsx)(\?.*)?$/,
           /\.(ts|tsx)(\?.*)?$/,
           /\.css$/,
-          /\.scss$/,
+          /\.s[ac]ss$/,
           /\.json$/,
           /\.bmp$/,
           /\.gif$/,
@@ -224,7 +224,7 @@ module.exports = {
         ],
       },
       {
-        test: /\.scss$/,
+        test: /\.s[ac]ss$/,
         use: [
           require.resolve('style-loader'),
           {

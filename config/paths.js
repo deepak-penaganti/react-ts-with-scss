@@ -13,11 +13,16 @@
 const path = require('path');
 const fs = require('fs');
 const url = require('url');
+let defaults = require('./defaults.json');
 
 // Make sure any symlinks in the project folder are resolved:
 // https://github.com/facebookincubator/create-react-app/issues/637
 const appDirectory = fs.realpathSync(process.cwd());
 const resolveApp = relativePath => path.resolve(appDirectory, relativePath);
+
+const configPath = resolveApp('.app.config.json');
+const config = configPath && require(configPath);
+Object.assign(defaults, config);
 
 const envPublicUrl = process.env.PUBLIC_URL;
 
@@ -33,7 +38,7 @@ function ensureSlash(path, needsSlash) {
 }
 
 const getPublicUrl = appPackageJson =>
-  envPublicUrl || require(appPackageJson).homepage;
+	envPublicUrl || require(appPackageJson).homepage;
 
 // We use `PUBLIC_URL` environment variable or "homepage" field to infer
 // "public path" at which the app is served.
@@ -51,17 +56,17 @@ function getServedPath(appPackageJson) {
 // config after eject: we're in ./config/
 module.exports = {
   dotenv: resolveApp('.env'),
-  appBuild: resolveApp('build'),
-  appPublic: resolveApp('public'),
-  appHtml: resolveApp('public/index.html'),
-  appIndexJs: resolveApp('src/index.tsx'),
-  appPackageJson: resolveApp('package.json'),
-  appSrc: resolveApp('src'),
+  appBuild: resolveApp(defaults.build),
+  appPublic: resolveApp(defaults.public),
+  appHtml: resolveApp(defaults.index_html),
+  appIndexJs: resolveApp(defaults.index_js),
+  appPackageJson: resolveApp(defaults.package_json),
+  appSrc: resolveApp(defaults.src),
   yarnLockFile: resolveApp('yarn.lock'),
   testsSetup: resolveApp('src/setupTests.ts'),
   appNodeModules: resolveApp('node_modules'),
-  publicUrl: getPublicUrl(resolveApp('package.json')),
-  servedPath: getServedPath(resolveApp('package.json')),
+  publicUrl: getPublicUrl(resolveApp(defaults.package_json)),
+  servedPath: getServedPath(resolveApp(defaults.package_json)),
 };
 
 // @remove-on-eject-begin
@@ -71,17 +76,17 @@ const resolveOwn = relativePath => path.resolve(__dirname, '..', relativePath);
 module.exports = {
   dotenv: resolveApp('.env'),
   appPath: resolveApp('.'),
-  appBuild: resolveApp('build'),
-  appPublic: resolveApp('public'),
-  appHtml: resolveApp('public/index.html'),
-  appIndexJs: resolveApp('src/index.tsx'),
-  appPackageJson: resolveApp('package.json'),
-  appSrc: resolveApp('src'),
+  appBuild: resolveApp(defaults.build),
+  appPublic: resolveApp(defaults.public),
+  appHtml: resolveApp(defaults.index_html),
+  appIndexJs: resolveApp(defaults.index_js),
+  appPackageJson: resolveApp(defaults.package_json),
+  appSrc: resolveApp(defaults.src),
   yarnLockFile: resolveApp('yarn.lock'),
   testsSetup: resolveApp('src/setupTests.ts'),
   appNodeModules: resolveApp('node_modules'),
-  publicUrl: getPublicUrl(resolveApp('package.json')),
-  servedPath: getServedPath(resolveApp('package.json')),
+  publicUrl: getPublicUrl(resolveApp(defaults.package_json)),
+  servedPath: getServedPath(resolveApp(defaults.package_json)),
   // These properties only exist before ejecting:
   ownPath: resolveOwn('.'),
   ownNodeModules: resolveOwn('node_modules'), // This is empty on npm 3

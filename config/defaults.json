@@ -1,8 +1,0 @@
-{
-	"build": "build",
-	"public": "public",
-	"index_js": "src/index.tsx",
-	"index_html": "public/index.html",
-	"src": "src",
-	"package_json": "package.json"
-}
